@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.drv_RunCPTBash_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.drv.runcptbash.modeldb.NormalDec</class>
+    <class>com.drv.runcptbash.modeldb.PuntosPro</class>
+    <class>com.drv.runcptbash.modeldb.DescrNormal</class>
+    <class>com.drv.runcptbash.modeldb.PronosProb</class>
+    <class>com.drv.runcptbash.modeldb.NormalTrim</class>
+    <class>com.drv.runcptbash.modeldb.Dominios</class>
+    <class>com.drv.runcptbash.modeldb.DatosEstPro</class>
+    <class>com.drv.runcptbash.modeldb.NormalMes</class>
+    <class>com.drv.runcptbash.modeldb.PeriodoPron</class>
+    <class>com.drv.runcptbash.modeldb.Predictores</class>
+    <class>com.drv.runcptbash.modeldb.Variables</class>
+    <class>com.drv.runcptbash.modeldb.Regiones</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Pronostico"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="postgres"/>
+    </properties>
+  </persistence-unit>
+</persistence>
