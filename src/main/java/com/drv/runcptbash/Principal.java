@@ -15,8 +15,6 @@ import com.drv.runcptbash.model.RegionDominio;
 import com.drv.runcptbash.util.ScriptCPT;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -1129,9 +1127,9 @@ public class Principal {
         double mingi = el menor indice de bondad permitido(Good index)
          */
         ////mensuales precipitacion
-        //index = 5;
-        /*
-        sc.runCPT(rutaExe, rutaCorrida, rrCostaI, año, index, 1, 0.35);//costaI
+        index = 7;
+        
+        /*sc.runCPT(rutaExe, rutaCorrida, rrCostaI, año, index, 1, 0.05);//costaI
         sc.runCPT(rutaExe, rutaCorrida, rrCostaII, año, index, 1, 0.35);//costaII
         sc.runCPT(rutaExe, rutaCorrida, rrOriente, año, index, 1, 0.35);//oriente
         sc.runCPT(rutaExe, rutaCorrida, rrGalapagos, año, index, 1, 0.3);//galapagos
@@ -1145,24 +1143,25 @@ public class Principal {
         ////mensuales temperatura mínima
         sc.runCPT(rutaExe, rutaCorrida, tminCosta, año, index, 1, 0.2);//costa
         sc.runCPT(rutaExe, rutaCorrida, tminOriente, año, index, 1, 0.2);//oriente
-        sc.runCPT(rutaExe, rutaCorrida, tminSierra, año, index, 1, 0.2);//galapagos
+        sc.runCPT(rutaExe, rutaCorrida, tminSierra, año, index, 1, 0.2);//galapagos*/
       
-        ////mensuales precipitacion
+        ////tirmestrales  precipitacion
         sc.runCPT(rutaExe, rutaCorrida, rrCostaI, año, index, 2, 0.35);//costaI
         sc.runCPT(rutaExe, rutaCorrida, rrCostaII, año, index, 2, 0.35);//costaII
-        */sc.runCPT(rutaExe, rutaCorrida, rrOriente, año, index, 2, 0.35);//oriente
+        sc.runCPT(rutaExe, rutaCorrida, rrOriente, año, index, 2, 0.35);//oriente
         sc.runCPT(rutaExe, rutaCorrida, rrGalapagos, año, index, 2, 0.3);//galapagos
         sc.runCPT(rutaExe, rutaCorrida, rrSierraI, año, index, 2, 0.2);//sierraI
         sc.runCPT(rutaExe, rutaCorrida, rrSierraII, año, index, 2, 0.2);//sierraII
         sc.runCPT(rutaExe, rutaCorrida, rrSierraIII, año, index, 2, 0.2);//sierraIII
-        ////mensuales temperatura máxima
+        ////tirmestrales temperatura máxima
         sc.runCPT(rutaExe, rutaCorrida, tmaxCosta, año, index, 2, 0.2);//costa
         sc.runCPT(rutaExe, rutaCorrida, tmaxOriente, año, index, 2, 0.2);//oriente
         sc.runCPT(rutaExe, rutaCorrida, tmaxSierra, año, index, 2, 0.2);//galapagos
-        ////mensuales temperatura mínima
+        ////tirmestrales temperatura mínima
         sc.runCPT(rutaExe, rutaCorrida, tminCosta, año, index, 2, 0.2);//costa
         sc.runCPT(rutaExe, rutaCorrida, tminOriente, año, index, 2, 0.2);//oriente
         sc.runCPT(rutaExe, rutaCorrida, tminSierra, año, index, 2, 0.2);//galapagos
+
         
         
     }

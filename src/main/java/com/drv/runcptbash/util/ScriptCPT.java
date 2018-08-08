@@ -16,13 +16,13 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -68,17 +68,17 @@ public class ScriptCPT {
                 break;
         }
         //logs de los Goodness index
-        FileWriter gisFw;
-        PrintWriter gisPw;
+        FileOutputStream gisFw;
+        PrintStream gisPw;
         //logs de los Goodness index nu usados (malos)
-        FileWriter badGisFw;
-        PrintWriter badGisPw;
+        FileOutputStream badGisFw;
+        PrintStream badGisPw;
         //logs de los DOMINIOS EJECUTADOS
-        FileWriter errorsFw;
-        PrintWriter errorsPw;
+        FileOutputStream errorsFw;
+        PrintStream errorsPw;
         //impresion de DOMINIOS EJECUTADOS
-        FileWriter domFw;
-        PrintWriter domPw;
+        FileOutputStream domFw;
+        PrintStream domPw;
         RegionDominio domTemp= null;        
         String ructemp=rutaCorrida; // ruta temnporal que sera usada cuando no se encuentre un buen indice
         
@@ -96,23 +96,24 @@ public class ScriptCPT {
         String l;
         try {
             getGI = rutaCorrida + per + "/RESULTADOS/GIs_" + dominios.get(0).getVariable() + "_" + dominios.get(0).getNombreRegion() + ".csv";
+            System.out.println(getGI);
             badGI = rutaCorrida + per + "/RESULTADOS/noGIs_" + dominios.get(0).getVariable() + "_" + dominios.get(0).getNombreRegion() + ".csv";
             errorLog = rutaCorrida + per + "/RESULTADOS/Errors_" + dominios.get(0).getVariable() + "_" + dominios.get(0).getNombreRegion() + ".csv";
             dominUse = rutaCorrida + per + "/RESULTADOS/Dominios_" + dominios.get(0).getVariable() + "_" + dominios.get(0).getNombreRegion() + ".csv";
-            gisFw = new FileWriter(getGI, true);
-            gisPw = new PrintWriter(gisFw);
+            gisFw = new FileOutputStream(getGI, true);
+            gisPw = new PrintStream(gisFw);
             gisPw.println("Corrida\tRegión\tGoodIndex\tCCA coor\t" + Calendar.getInstance().getTime());
-
-            badGisFw = new FileWriter(badGI, true);
-            badGisPw = new PrintWriter(badGisFw);
+            
+            badGisFw = new FileOutputStream(badGI, true);
+            badGisPw = new PrintStream(badGisFw);
             badGisPw.println("Corrida\tRegión\tbad GoodIndex\tCCA coor\t" + Calendar.getInstance().getTime());
-
-            errorsFw = new FileWriter(new File(errorLog), true);
-            errorsPw = new PrintWriter(errorsFw);
+            
+            errorsFw = new FileOutputStream(new File(errorLog), true);
+            errorsPw = new PrintStream(errorsFw);
             errorsPw.println("Errores generados " + Calendar.getInstance().getTime());
 
-            domFw = new FileWriter(new File(dominUse), true);
-            domPw = new PrintWriter(domFw);
+            domFw = new FileOutputStream(new File(dominUse), true);
+            domPw = new PrintStream(domFw);
             domPw.println("corrida No\t Variable\t NombreRegion\tEs_lat_nor\tEs_lat_sur\tEs_lon_oes\tEs_lon_est"
                     + "\tPredictor\tpre_Lat_nor\tpre_Lat_sur\tpre_Lon_oes\tpre_Lon_est\tMaxModos\t" + Calendar.getInstance().getTime());
 
@@ -323,14 +324,18 @@ public class ScriptCPT {
                         System.out.println("El archivo de entrada Y no existe: " + yInDa);
                     }
                 }
-            }///fin del for            
+            }///fin del for  
+            gisPw.flush();
             gisPw.close();
             gisFw.close();
+            badGisPw.flush();
             badGisPw.close();
             badGisFw.close();
+            errorsPw.flush();
             errorsPw.close();
             errorsFw.close();
             domFw.close();
+            domPw.flush();
             domPw.close();
 
             /*verificar si se generaron errores  caso contrario elimina el archivo errorLog*/
